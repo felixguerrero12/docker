@@ -1,0 +1,26 @@
+version: '2'
+services:
+ app:
+  build: .
+  container_name: tasty_app
+  ports:
+  - "8001:80"
+  environment:
+  - MYSQL_HOSTNAME=db
+  - MYSQL_DATABASE=tastyigniter
+  - MYSQL_USER=root
+  - MYSQL_PASSWORD=06o%u4@U%9vTEe@
+  restart: always
+ db:
+  image: mariadb
+  container_name: tasty_db
+  volumes:
+  - db_data:/var/lib/mysql
+  environment:
+  - MYSQL_DATABASE=tastyigniter
+  - MYSQL_USER=root
+  - MYSQL_ROOT_PASSWORD=06o%u4@U%9vTEe@
+  restart: always
+volumes:
+  db_data:
+    driver: local
